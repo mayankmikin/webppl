@@ -11,5 +11,5 @@ public interface SubjectService
 	   SubjectName findById(Long id);
 	   SubjectName findBySubName(String subname);	
 	   List<SubjectName> findAll();
-
+	   SubjectName createwithrelationship(SubjectName subObj);
 }

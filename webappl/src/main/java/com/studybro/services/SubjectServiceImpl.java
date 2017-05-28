@@ -54,6 +54,14 @@ public class SubjectServiceImpl implements SubjectService
 		// TODO Auto-generated method stub
 		return (List<SubjectName>) repo.findAll();
 	}
+
+	@Override
+	public SubjectName createwithrelationship(SubjectName subObj) {
+		
+		return repo.save(subObj);
+	}
+
+	
 	
 	
 }

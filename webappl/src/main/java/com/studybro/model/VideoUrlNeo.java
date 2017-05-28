@@ -1,6 +1,7 @@
 package com.studybro.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -21,8 +22,9 @@ public class VideoUrlNeo
     
     // many to many mapping one video url can be present inside many subjects
     @Relationship(type = "CLASS_IS", direction=Relationship.UNDIRECTED)
-    private List<SubjectName> subname;
-   
+    private Set<ClassName> classname = new HashSet<ClassName>();
+    @Relationship(type = "SUBJECT_IS", direction=Relationship.UNDIRECTED)
+    private Set<SubjectName> subname = new HashSet<SubjectName>();
     
 	public VideoUrlNeo() {
 
@@ -53,25 +55,26 @@ public class VideoUrlNeo
 		this.video_name = video_name;
 	}
 
-	public List<SubjectName> getSubname() {
+
+
+	
+
+	public Set<ClassName> getClassname() {
+		return classname;
+	}
+
+	public void setClassname(Set<ClassName> classname) {
+		this.classname = classname;
+	}
+
+	public Set<SubjectName> getSubname() {
 		return subname;
 	}
 
-	public void setSubname(List<SubjectName> subname) {
-		this.subname = subname;
-	}
-
-	public VideoUrlNeo(Long id, String url_name, String video_name,
-			List<SubjectName> subname) {
-		super();
-		this.id = id;
-		this.url_name = url_name;
-		this.video_name = video_name;
+	public void setSubname(Set<SubjectName> subname) {
 		this.subname = subname;
 	}
 
 	
-
-    
-
+	
 }

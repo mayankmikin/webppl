@@ -1,18 +1,14 @@
 package com.studybro.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.studybro.model.AcademicLevel;
 import com.studybro.model.SubjectName;
-import com.studybro.model.VideoUrlNeo;
 import com.studybro.services.SubjectService;
 
 @Controller
@@ -38,7 +34,7 @@ public class SubjectController
 		return subservice.findAll();
 	}
 	
-	@RequestMapping(value = "/all/{subjectname}", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/all/{subjectname}", method = RequestMethod.GET)
 	public List<VideoUrlNeo> findALLVideosBySubjectName(
     @PathVariable(value="subjectname", required=true) String subname)
 	{
@@ -57,6 +53,6 @@ public class SubjectController
 		}
 		return allvideos;
 		
-	}
+	}*/
 	
 }

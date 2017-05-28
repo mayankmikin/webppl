@@ -57,5 +57,11 @@ public class VideoServiceImpl implements VideoService
 		return searchedVideo;
 	}
 
+	@Override
+	public List<VideoUrlNeo> findAllBySubjectName(String subname) {
+		
+		return null;
+	}
+
 	
 }

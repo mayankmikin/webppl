@@ -13,5 +13,6 @@ public interface VideoService
 	   void delete(VideoUrlNeo videourl);		
 	   VideoUrlNeo findById(long id);		
 	   List<VideoUrlNeo> findAll();
+	   List<VideoUrlNeo> findAllBySubjectName(String subname);
 	   VideoUrlNeo findByname(String videoname);
 }

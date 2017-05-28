@@ -1,6 +1,7 @@
  package com.studybro.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -17,8 +18,8 @@ public class SubjectName
 	
 	private String subname;
 	// many to many mapping one subject can have many videos which are linked via classlevel(class 11 , class 12) 
-	@Relationship(type="CLASS_IS", direction = Relationship.UNDIRECTED)
-    private List<AcademicLevel> alevel;
+	@Relationship(type="SUBJECT_IS", direction = Relationship.UNDIRECTED)
+    private Set<VideoUrlNeo> videourls= new HashSet<VideoUrlNeo>();
 
 	public SubjectName() {
 		super();
@@ -84,13 +85,17 @@ public class SubjectName
 		this.id = id;
 	}
 
-	public List<AcademicLevel> getAlevel() {
-		return alevel;
+	public Set<VideoUrlNeo> getVideourls() {
+		return videourls;
 	}
 
-	public void setAlevel(List<AcademicLevel> alevel) {
-		this.alevel = alevel;
+	public void setVideourls(Set<VideoUrlNeo> videourls) {
+		this.videourls = videourls;
 	}
+
+	
+
+	
 	
 	
 	

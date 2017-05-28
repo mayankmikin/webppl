@@ -1,8 +1,5 @@
 package com.studybro.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.RelationshipEntity;
@@ -24,12 +21,11 @@ public class AcademicLevel
 	
 	private String  semester;
 
-	private Collection<String> nameOfRelationship = new ArrayList<>();
-
-	@StartNode
-	private SubjectName subjectName;
 
 	@EndNode
+	private ClassName className;
+
+	@StartNode
 	private VideoUrlNeo videourl;
 	
 	public AcademicLevel() {
@@ -68,20 +64,12 @@ public class AcademicLevel
 		this.id = id;
 	}
 
-	public Collection<String> getNameOfRelationship() {
-		return nameOfRelationship;
+	public ClassName getClassName() {
+		return className;
 	}
 
-	public void setNameOfRelationship(Collection<String> nameOfRelationship) {
-		this.nameOfRelationship = nameOfRelationship;
-	}
-
-	public SubjectName getSubjectName() {
-		return subjectName;
-	}
-
-	public void setSubjectName(SubjectName subjectName) {
-		this.subjectName = subjectName;
+	public void setClassName(ClassName className) {
+		this.className = className;
 	}
 
 	public VideoUrlNeo getVideourl() {
