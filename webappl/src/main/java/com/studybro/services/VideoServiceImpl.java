@@ -3,6 +3,8 @@ package com.studybro.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.neo4j.annotation.Query;
+import org.springframework.data.neo4j.template.Neo4jTemplate;
 import org.springframework.stereotype.Service;
 
 import com.studybro.model.VideoUrlNeo;
@@ -14,9 +16,7 @@ public class VideoServiceImpl implements VideoService
 
 	@Autowired
 	VideoRepository repo;
-	
-	
-	
+		
 	@Override
 	public VideoUrlNeo create(VideoUrlNeo video) {
 		// TODO Auto-generated method stub
@@ -61,6 +61,13 @@ public class VideoServiceImpl implements VideoService
 	public List<VideoUrlNeo> findAllBySubjectName(String subname) {
 		
 		return null;
+	}
+
+	@Override
+	
+	public List<VideoUrlNeo> findAllByClassName(String classname) {
+		
+		return repo.findAllByClassName(classname);
 	}
 
 	
