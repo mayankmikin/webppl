@@ -68,4 +68,30 @@ public class UserServiceImpl implements UserService
 		return repo.save(user);
 	}
 
+	@Override
+	public User getUserByEmailID(String email) 
+	{
+		List<User>allusers=(List<User>) repo.findAll();
+		for(User u:allusers)
+		{
+			if(u.getEmail().equals(email))
+			{
+				return u;
+			}
+		}
+	
+		return null;
+	}
+
+	@Override
+	public User login(String email, String password) {
+
+		User u=getUserByEmailID(email);
+		if(u.getPassword().equals(password))
+		{
+			return u;
+		}
+		return null;
+	}
+
 }

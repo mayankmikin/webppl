@@ -17,7 +17,8 @@ public interface UserService
 	User addFriend(String friend,User user);
 	User addWatchedVideo(VideoUrlNeo url);
 	User addFavouriteVideo(VideoUrlNeo url);
-	
+	User getUserByEmailID(String email);
+	User login(String email, String password);
 	User registerUser(User user);
 	
 }
