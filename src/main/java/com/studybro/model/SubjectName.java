@@ -1,8 +1,15 @@
-package com.studybro.model;
+ package com.studybro.model;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @NodeEntity
 public class SubjectName 
 {
@@ -10,8 +17,9 @@ public class SubjectName
 	private Long id;
 	
 	private String subname;
-	
-	private VideoUrlNeo videolink;
+	// many to many mapping one subject can have many videos which are linked via classlevel(class 11 , class 12) 
+	@Relationship(type="SUBJECT_IS", direction = Relationship.UNDIRECTED)
+    private Set<VideoUrlNeo> videourls= new HashSet<VideoUrlNeo>();
 
 	public SubjectName() {
 		super();
@@ -71,17 +79,23 @@ public class SubjectName
 		return "SubjectName [id=" + id + ", subname=" + subname + "]";
 	}
 
-	public VideoUrlNeo getVideolink() {
-		return videolink;
-	}
-
-	public void setVideolink(VideoUrlNeo videolink) {
-		this.videolink = videolink;
-	}
+	
 
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public Set<VideoUrlNeo> getVideourls() {
+		return videourls;
+	}
+
+	public void setVideourls(Set<VideoUrlNeo> videourls) {
+		this.videourls = videourls;
+	}
+
+	
+
+	
 	
 	
 	

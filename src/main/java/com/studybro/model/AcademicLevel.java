@@ -1,9 +1,15 @@
 package com.studybro.model;
 
+import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.GraphId;
-import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.RelationshipEntity;
+import org.neo4j.ogm.annotation.StartNode;
 
-@NodeEntity
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@RelationshipEntity(type = "CLASS_IS")
 public class AcademicLevel 
 {
 	// this can be class 11 12 and any undergraduate
@@ -15,10 +21,15 @@ public class AcademicLevel
 	
 	private String  semester;
 
-	private VideoUrlNeo videolink;
+
+	@EndNode
+	private ClassName className;
+
+	@StartNode
+	private VideoUrlNeo videourl;
 	
 	public AcademicLevel() {
-		super();
+
 		// TODO Auto-generated constructor stub
 	}
 
@@ -48,16 +59,25 @@ public class AcademicLevel
 		return id;
 	}
 
-	public VideoUrlNeo getVideolink() {
-		return videolink;
-	}
-
-	public void setVideolink(VideoUrlNeo videolink) {
-		this.videolink = videolink;
-	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public ClassName getClassName() {
+		return className;
+	}
+
+	public void setClassName(ClassName className) {
+		this.className = className;
+	}
+
+	public VideoUrlNeo getVideourl() {
+		return videourl;
+	}
+
+	public void setVideourl(VideoUrlNeo videourl) {
+		this.videourl = videourl;
 	}
 	
 	

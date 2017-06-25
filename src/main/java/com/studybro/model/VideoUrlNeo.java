@@ -1,9 +1,15 @@
 package com.studybro.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @NodeEntity
 public class VideoUrlNeo 
 {
@@ -14,26 +20,20 @@ public class VideoUrlNeo
  
     private String video_name;
     
-    @Relationship(type = "subject_is", direction=Relationship.UNDIRECTED)
-    private SubjectName subname;
-    @Relationship(type = "academic_level_is", direction=Relationship.UNDIRECTED)
-    private AcademicLevel alevel;
+
+    @Relationship(type = "DESCRIPTION", direction=Relationship.UNDIRECTED)
+    private Set<VideoDescription> description = new HashSet<VideoDescription>();
+    
+    // many to many mapping one video url can be present inside many subjects
+    @Relationship(type = "CLASS_IS", direction=Relationship.UNDIRECTED)
+    private Set<ClassName> classname = new HashSet<ClassName>();
+    @Relationship(type = "SUBJECT_IS", direction=Relationship.UNDIRECTED)
+    private Set<SubjectName> subname = new HashSet<SubjectName>();
     
 	public VideoUrlNeo() {
 
 		// TODO Auto-generated constructor stub
 	}
-
-	
-	public VideoUrlNeo(String url_name, String video_name, SubjectName subname,
-			AcademicLevel alevel) {
-		super();
-		this.url_name = url_name;
-		this.video_name = video_name;
-		this.subname = subname;
-		this.alevel = alevel;
-	}
-
 
 	public Long getId() {
 		return id;
@@ -59,22 +59,33 @@ public class VideoUrlNeo
 		this.video_name = video_name;
 	}
 
-	public SubjectName getSubname() {
+
+	public Set<ClassName> getClassname() {
+		return classname;
+	}
+
+	public void setClassname(Set<ClassName> classname) {
+		this.classname = classname;
+	}
+
+	public Set<SubjectName> getSubname() {
 		return subname;
 	}
 
-	public void setSubname(SubjectName subname) {
+	public void setSubname(Set<SubjectName> subname) {
 		this.subname = subname;
 	}
 
-	public AcademicLevel getAlevel() {
-		return alevel;
+	public Set<VideoDescription> getDescription() {
+		return description;
 	}
 
-	public void setAlevel(AcademicLevel alevel) {
-		this.alevel = alevel;
+	public void setDescription(Set<VideoDescription> description) {
+		this.description = description;
 	}
 
-    
+	
 
+	
+	
 }
