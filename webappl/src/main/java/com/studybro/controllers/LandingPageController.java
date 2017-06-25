@@ -48,6 +48,7 @@ public class LandingPageController
 		//VideoUrl v=videoservice.findOne("FIRSTONE");
 		//logger.info("url is "+v.getUrl_name());
 		//return v.getUrl_name();
+		System.out.println(videoservice.findAllBySubjectName(subname));
 		return videoservice.findAllBySubjectName(subname);
 	}
 	
@@ -62,7 +63,7 @@ public class LandingPageController
 
 		//videoservice.create(new VideoUrlNeo(videourl, videoname,new SubjectName(subname),new AcademicLevel(classname, semester)));
 		SubjectName sub=subservice.findBySubName(subname);
-		ClassName cls=classervice.findBySubName(classname);
+		ClassName cls=classervice.findByClassName(classname);
 		VideoUrlNeo oldVid=videoservice.findByname(videoname);
 		if(oldVid!=null)
 		{

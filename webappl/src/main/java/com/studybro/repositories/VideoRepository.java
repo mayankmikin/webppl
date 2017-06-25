@@ -15,4 +15,10 @@ public interface VideoRepository extends PagingAndSortingRepository<VideoUrlNeo,
 			"where c.classname={0}"+
 			"RETURN v LIMIT 25")
 	List<VideoUrlNeo>findAllByClassName(String classname);
+	
+	@Query("MATCH p=(v:VideoUrlNeo)-[r:SUBJECT_IS]->(s:SubjectName)"+
+			"where s.subname={0}"+
+			"RETURN v LIMIT 25")
+	List<VideoUrlNeo>findAllBySubjectName(String subjectname);
+	
 }

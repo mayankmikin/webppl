@@ -20,6 +20,10 @@ public class VideoUrlNeo
  
     private String video_name;
     
+
+    @Relationship(type = "DESCRIPTION", direction=Relationship.UNDIRECTED)
+    private Set<VideoDescription> description = new HashSet<VideoDescription>();
+    
     // many to many mapping one video url can be present inside many subjects
     @Relationship(type = "CLASS_IS", direction=Relationship.UNDIRECTED)
     private Set<ClassName> classname = new HashSet<ClassName>();
@@ -56,9 +60,6 @@ public class VideoUrlNeo
 	}
 
 
-
-	
-
 	public Set<ClassName> getClassname() {
 		return classname;
 	}
@@ -74,6 +75,16 @@ public class VideoUrlNeo
 	public void setSubname(Set<SubjectName> subname) {
 		this.subname = subname;
 	}
+
+	public Set<VideoDescription> getDescription() {
+		return description;
+	}
+
+	public void setDescription(Set<VideoDescription> description) {
+		this.description = description;
+	}
+
+	
 
 	
 	

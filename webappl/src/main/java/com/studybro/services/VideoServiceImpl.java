@@ -60,7 +60,7 @@ public class VideoServiceImpl implements VideoService
 	@Override
 	public List<VideoUrlNeo> findAllBySubjectName(String subname) {
 		
-		return null;
+		return repo.findAllBySubjectName(subname);
 	}
 
 	@Override

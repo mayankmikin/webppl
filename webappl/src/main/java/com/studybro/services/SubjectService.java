@@ -12,4 +12,5 @@ public interface SubjectService
 	   SubjectName findBySubName(String subname);	
 	   List<SubjectName> findAll();
 	   SubjectName createwithrelationship(SubjectName subObj);
+/*	   List<String> findAllSubjectNames();*/
 }

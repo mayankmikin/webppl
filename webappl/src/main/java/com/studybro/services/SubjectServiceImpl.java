@@ -1,5 +1,6 @@
 package com.studybro.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class SubjectServiceImpl implements SubjectService
 
 	@Autowired
 	SubjectRepository repo;
-
+	
 	@Override
 	public SubjectName create(String subname) {
 		// TODO Auto-generated method stub
@@ -52,6 +53,7 @@ public class SubjectServiceImpl implements SubjectService
 	@Override
 	public List<SubjectName> findAll() {
 		// TODO Auto-generated method stub
+		//System.out.println(repo.findAll());
 		return (List<SubjectName>) repo.findAll();
 	}
 
@@ -61,7 +63,18 @@ public class SubjectServiceImpl implements SubjectService
 		return repo.save(subObj);
 	}
 
-	
+
+/*	public List<String> findAllSubjectNames() 
+	{
+		// TODO Auto-generated method stub
+		List<SubjectName> sublist=repo.findAllSubjectNames();
+		List<String> subnames=new ArrayList<String>();
+		for(SubjectName sub:sublist)
+		{
+			subnames.add(sub.getSubname());
+		}
+		return  subnames;
+	}*/
 	
 	
 }

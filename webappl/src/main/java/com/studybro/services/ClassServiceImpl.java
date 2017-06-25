@@ -33,7 +33,7 @@ public class ClassServiceImpl  implements ClassService
 	}
 
 	@Override
-	public ClassName findBySubName(String classname) {
+	public ClassName findByClassName(String classname) {
 		// TODO Auto-generated method stub
 		ClassName cls=null;
 		for(ClassName c:repo.findAll())

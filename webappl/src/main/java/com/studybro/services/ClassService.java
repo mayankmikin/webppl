@@ -9,7 +9,7 @@ public interface ClassService
 	ClassName create(String classname);
 	   void delete(ClassName classname);		
 	   ClassName findById(Long id);
-	   ClassName findBySubName(String classname);	
+	   ClassName findByClassName(String classname);	
 	   List<ClassName> findAll();
 	   ClassName createwithrelationship(ClassName classname);
 
