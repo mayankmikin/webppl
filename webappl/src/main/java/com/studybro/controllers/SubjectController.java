@@ -17,7 +17,7 @@ import com.studybro.services.SubjectService;
 import com.studybro.services.VideoService;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 @RequestMapping("/subject")
 public class SubjectController 
 {
