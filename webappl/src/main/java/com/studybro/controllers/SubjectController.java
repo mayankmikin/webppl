@@ -2,6 +2,8 @@ package com.studybro.controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,12 +25,14 @@ public class SubjectController
 	SubjectService subservice;
 	@Autowired
 	VideoService videoservice;
+	public static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createNewSubject(
 			@RequestParam(value="subname", required=true) String subname
 			)
 	{
+		logger.info("creating a new subject with a name "+subname);
 		subservice.create(subname);
 		return "created subject"+subname;
 	}
@@ -36,13 +40,14 @@ public class SubjectController
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<SubjectName> getallSubjetcList()
 	{
-		
+		logger.info("Get all Subjects is called");
 		return subservice.findAll();
 	}
 	
 	@RequestMapping(value = "/allnames", method = RequestMethod.GET)
 	public List<SubjectName> getallSubjetcNames()
 	{
+		logger.info("Get all Subject Names");
 		System.out.println(subservice.findAll());
 		return subservice.findAll();
 	}
