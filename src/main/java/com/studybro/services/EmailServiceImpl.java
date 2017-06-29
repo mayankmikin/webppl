@@ -54,7 +54,8 @@ public class EmailServiceImpl implements EmailService
 	    		
 	    		System.out.println("Getting html file");
 	    	//File file= new File(this.getClass().getResource(mailpath).getFile());
-	    	File file =ResourceUtils.getFile("classpath:"+mailpath);
+	    	//File file =ResourceUtils.getFile("classpath:"+mailpath);
+		File file = new File(EmailServiceImpl.class.getClassLoader().getResource(mailpath).getFile());
 	    	String message =FileUtils.readFileToString(file, "UTF-8");
 	    	return message;
 	    	}
