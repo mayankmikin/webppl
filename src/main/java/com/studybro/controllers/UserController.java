@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.studybro.model.SbConstant;
 import com.studybro.model.User;
+import com.studybro.services.EmailService;
 import com.studybro.services.UserService;
 
 @RestController
@@ -21,11 +23,20 @@ public class UserController
 {
 	@Autowired
 	UserService userservice;
+	@Autowired
+	EmailService emailservice;
 
 	@RequestMapping(value="/register",method = RequestMethod.POST)
 	public ResponseEntity<User> createUser(@RequestBody User user)
 	{
 		User u=userservice.registerUser(user);
+		try {
+			emailservice.sendmail(SbConstant.EmailType.CONFIRMATION_SUBJECT,SbConstant.EmailType.CONFIRMATION_ACCOUNT,u);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		
 		return new ResponseEntity<User>(u,HttpStatus.OK);
 	}
 	@RequestMapping(value="/addFriend",method = RequestMethod.POST)
