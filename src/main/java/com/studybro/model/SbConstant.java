@@ -15,7 +15,7 @@ public interface SbConstant
 	interface EmailType
 	{
 		
-		String CONFIRMATION_ACCOUNT="\templates\confirmAccount.html";
+		String CONFIRMATION_ACCOUNT="/templates/confirmAccount.html";
 		String CONFIRMATION_SUBJECT="Please Verify Your Email Address to Activate your account";
 		
 	}

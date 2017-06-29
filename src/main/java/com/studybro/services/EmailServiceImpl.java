@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
+import org.springframework.util.ResourceUtils;
 import com.studybro.model.User;
 
 @PropertySource("classpath:application.properties")
@@ -53,8 +53,8 @@ public class EmailServiceImpl implements EmailService
 	    	{
 	    		
 	    		System.out.println("Getting html file");
-	    	File file= new File(this.getClass().getResource(mailpath).getFile());
-	    	
+	    	//File file= new File(this.getClass().getResource(mailpath).getFile());
+	    	File file =ResourceUtils.getFile("classpath:"+mailpath);
 	    	String message =FileUtils.readFileToString(file, "UTF-8");
 	    	return message;
 	    	}
