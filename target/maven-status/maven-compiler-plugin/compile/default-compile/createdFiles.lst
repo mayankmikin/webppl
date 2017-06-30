@@ -1,0 +1,11 @@
+com\studybro\model\SubjectName.class
+com\studybro\repositories\AlevelRepository.class
+com\studybro\services\VideoService.class
+com\studybro\WebapplApplication.class
+com\studybro\model\AcademicLevel.class
+com\studybro\model\VideoUrlNeo.class
+com\studybro\repositories\SubjectRepository.class
+com\studybro\repositories\VideoRepository.class
+com\studybro\controllers\LandingPageController.class
+com\studybro\relationships\VideoSubjectRelaionship.class
+com\studybro\services\VideoServiceImpl.class
