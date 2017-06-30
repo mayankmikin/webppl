@@ -99,7 +99,7 @@
 			</directory>
 				<includes>
 				<include>
-				**/*.html
+				/templates/confirmAccount.html
 				</include>
 				</includes>
 			</resource>
