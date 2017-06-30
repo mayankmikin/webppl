@@ -48,8 +48,9 @@ public class EmailServiceImpl implements EmailService
 		javaMailSender.send(generateMailMessage);
 	}
 	
-	   public  String getHtmlContent(String mailpath)
+	     public  String getHtmlContent(String mailpath)
 	    {
+		   String message="";
 	    	try
 	    	{
 	    		
@@ -58,10 +59,20 @@ public class EmailServiceImpl implements EmailService
 	    	//File file =ResourceUtils.getFile("classpath:"+mailpath);
 	    		//File file = new File(EmailServiceImpl.class.getClassLoader().getResource(mailpath).getFile());
 	    		//Get file from resources folder
-	    		ClassLoader classLoader = getClass().getClassLoader();
-	    		File file = new File(classLoader.getResource(mailpath).getFile());
-	    	System.out.println("File Found : " + file.exists());
-	    	String message =FileUtils.readFileToString(file, "UTF-8");
+	    		//ClassLoader classLoader = getClass().getClassLoader();
+	    		//File file = new File(classLoader.getResource(mailpath).getFile());
+	    	//System.out.println("File Found : " + file.exists());
+	    	//String message =FileUtils.readFileToString(file, "UTF-8");
+	    	
+	    		
+	    		 ClassLoader classLoader = getClass().getClassLoader();
+	    		  try {
+	    			  message = IOUtils.toString(classLoader.getResourceAsStream(mailpath));
+	    		  } catch (IOException e) {
+	    			e.printStackTrace();
+	    		  }
+
+	    	    	
 	    	return message;
 	    	}
 	    	catch(Exception e)
