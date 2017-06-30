@@ -13,6 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
+
 import com.studybro.model.User;
 
 @PropertySource("classpath:application.properties")
@@ -55,9 +56,9 @@ public class EmailServiceImpl implements EmailService
 	    		System.out.println("Getting html file");
 	    	//File file= new File(this.getClass().getResource(mailpath).getFile());
 	    	File file =ResourceUtils.getFile("classpath:"+mailpath);
-		//File file = new File(EmailServiceImpl.class.getClassLoader().getResource(mailpath).getFile());
-	    	System.out.println("File Found : " + file.exists()+"path is "+mailpath);
-			String message =FileUtils.readFileToString(file, "UTF-8");
+	    		//File file = new File(EmailServiceImpl.class.getClassLoader().getResource(mailpath).getFile());
+	    	System.out.println("File Found : " + file.exists());
+	    	String message =FileUtils.readFileToString(file, "UTF-8");
 	    	return message;
 	    	}
 	    	catch(Exception e)
