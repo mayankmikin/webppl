@@ -1,10 +1,13 @@
 package com.studybro.services;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.studybro.model.Roles;
 import com.studybro.model.User;
 import com.studybro.model.VideoUrlNeo;
 import com.studybro.repositories.UserRepository;
@@ -14,8 +17,10 @@ public class UserServiceImpl implements UserService
 {
 	@Autowired
 	UserRepository repo;
+	@Autowired
+	PasswordEncoder bcryptencoder;
 	@Override
-	public User findUserByName(String name) {
+	public User findUserByUserName(String name) {
 		
 		List<User>allusers=(List<User>) repo.findAll();
 		for(User u:allusers)
@@ -43,7 +48,7 @@ public class UserServiceImpl implements UserService
 	@Override
 	public User addFriend(String friend,User user) 
 	{
-		User u=findUserByName(friend);
+		User u=findUserByUserName(friend);
 		//u.getFriends().add(user);
 		user.getFriends().add(u);
 		
@@ -64,7 +69,8 @@ public class UserServiceImpl implements UserService
 
 	@Override
 	public User registerUser(User user) {
-		
+		Roles r = new Roles();
+		user.getRoles().add(r);
 		return repo.save(user);
 	}
 
@@ -85,9 +91,13 @@ public class UserServiceImpl implements UserService
 
 	@Override
 	public User login(String email, String password) {
-
+System.out.println("email is "+email);
 		User u=getUserByEmailID(email);
-		if(u.getPassword().equals(password))
+		System.out.println("password from api is ");
+		System.out.println(password);
+		System.out.println("password in db is ");
+		System.out.println(u.getPassword());
+		if(bcryptencoder.matches(password, u.getPassword()))
 		{
 			return u;
 		}

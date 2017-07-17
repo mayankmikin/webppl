@@ -24,6 +24,8 @@ public class EmailServiceImpl implements EmailService
 	@Autowired
     public JavaMailSender javaMailSender;
 	
+	@Autowired
+    private ApplicationContext appContext;
 	@Override
 	public void sendmail(String subject, String mailpath ,User user) throws MessagingException
 	{
@@ -48,7 +50,7 @@ public class EmailServiceImpl implements EmailService
 		javaMailSender.send(generateMailMessage);
 	}
 	
-	     public  String getHtmlContent(String mailpath)
+	   public  String getHtmlContent(String mailpath)
 	    {
 		   String message="";
 	    	try

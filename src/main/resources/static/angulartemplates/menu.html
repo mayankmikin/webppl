@@ -1,0 +1,71 @@
+<!-- 	<style>
+.dropdown {
+    position: relative;
+    display: inline-block;
+     border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	font-family: 'Cagliostro', sans-serif;
+	color: #555555;
+	display: block;
+	font-size: 16px;
+	line-height: 1.8em;
+	padding: 12px 28px;
+	text-transform:uppercase;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    color:#ffffff;
+	background-color: rgb(191, 204, 41);
+	box-shadow: 0 8px rgb(168, 180, 32);
+	-webkit-box-shadow: 0 6px rgb(168, 180, 32);
+	-moz-box-shadow: 0 6px rgb(168, 180, 32);
+	-o-box-shadow: 0 6px rgb(168, 180, 32);
+	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+	transition: all 0.4s ease-out;
+}
+</style> -->
+<div class="wrap">
+<div class="wrapper">
+<div class="logo">
+	<a href="index.html"><h1>studybro</h1></a>
+</div>
+<div class="header_right" ng-controller="NavController">
+	<div class="cssmenu">
+		<ul>
+
+		  	<li ng-class="{active : activeMenu === item.name}" ng-repeat="item in menuitems">
+		  	<a href="#{{item.name}}" ng-click="setActive(item.name)" ><span>{{item.name}}</span></a>
+		  		<ul ng-if="item.subItems.length>0">
+		  		<li ng-class="{active : activeMenu === subitem.name}" ng-repeat="subitem in item.subItems">
+		  	<a href="#{{subitem.name}}" ng-click="setActive(subitem.name)"><span>{{subitem.name}}</span></a></li>
+		  		</ul>
+		  	</li>
+<!-- <div class="dropdown">
+  <li>Mouse over me</li>
+  <div class="dropdown-content">
+    <a ><span>Hello World!</span></a>
+  </div>
+</div> -->
+			<div class="clear"></div>
+		 </ul>
+
+	</div>
+</div>
+	<div class="clear"></div>
+</div>
+</div>

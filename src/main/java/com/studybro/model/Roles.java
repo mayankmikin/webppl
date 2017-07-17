@@ -13,9 +13,9 @@ public class Roles
 	@GraphId
 	private Long id;
 	
-	String rolename;
+	String rolename=Profiles.USER.getUserProfileType();
 	
-	String accesstype;
+	String accesstype=AccessType.FREE.getuseraccessType();
 
 	public Long getId() {
 		return id;
@@ -41,9 +41,8 @@ public class Roles
 		this.accesstype = accesstype;
 	}
 
-	public Roles(Long id, String rolename, String accesstype) {
+	public Roles( String rolename, String accesstype) {
 		super();
-		this.id = id;
 		this.rolename = rolename;
 		this.accesstype = accesstype;
 	}

@@ -8,7 +8,7 @@ import com.studybro.model.VideoUrlNeo;
 
 public interface UserService 
 {
-	User findUserByName(String name);
+	User findUserByUserName(String name);
 	
 	String deactivteUser(User username);
 	
