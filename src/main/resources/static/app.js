@@ -16,18 +16,18 @@ angular.module('hmModule').service('stacktraceService', StacktraceService);
 app.constant('urls', {
 
    // VIDEO_SERVICE_API:"https://still-tor-67248.herokuapp.com/sb/landing/video"
-    VIDEO_SERVICE_API:"http://localhost:8088/sb/landing/video",
-    VIDEO_Library_API:"http://localhost:8088/sb/landing/videolibrary",
-    VIDEO_ADD_API:"http://localhost:8088/sb/video/create",
-    VIDEO_ADD_SUBJECT:"http://localhost:8088/sb/subject/create",
-    SUBJECT_NAME_API:"http://localhost:8088/sb/subject/all",
-    MENU_ITEM_ADD_API: "http://localhost:8088/sb/menu/create",
-    MENU_ITEM_ALL_API: "http://localhost:8088/sb/menu/all",
-    USER_ADD_API: "http://localhost:8088/sb/user/register",
-    USER_LOGIN_API:"http://localhost:8088/sb/user/login",
-    PREMIUM_API:"http://localhost:8088/sb/premium/all",
-    VIDEO_ADD_DESCRIPTION_BY_VIDEO_ID:"http://localhost:8088/sb/video/getDesc",
-    STATES_API:"http://localhost:8088/sb/state/search/findBystatename?statename="
+    VIDEO_SERVICE_API:"http://localhost/sb/landing/video",
+    VIDEO_Library_API:"http://localhost/sb/landing/videolibrary",
+    VIDEO_ADD_API:"http://localhost/sb/video/create",
+    VIDEO_ADD_SUBJECT:"http://localhost/sb/subject/create",
+    SUBJECT_NAME_API:"http://localhost/sb/subject/all",
+    MENU_ITEM_ADD_API: "http://localhost/sb/menu/create",
+    MENU_ITEM_ALL_API: "http://localhost/sb/menu/all",
+    USER_ADD_API: "http://localhost/sb/user/register",
+    USER_LOGIN_API:"http://localhost/sb/user/login",
+    PREMIUM_API:"http://localhost/sb/premium/all",
+    VIDEO_ADD_DESCRIPTION_BY_VIDEO_ID:"http://localhost/sb/video/getDesc",
+    STATES_API:"http://localhost/sb/state/search/findBystatename?statename="
 });
 
 app.constant('errors', {
