@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	        .antMatchers("/","/sb", "/**.html", "/**.js","/**/**.html", "/**/**.js","/**/**.css","/**/**.png","/**/**.jpg").permitAll()
 	        .antMatchers(HttpMethod.POST, "/user/login").permitAll()
 	        .antMatchers("/video/free").permitAll()
-	        .anyRequest().authenticated()
+	       // .anyRequest().authenticated()
 	        .and()
 	        // We filter the api/login requests
 	        .addFilterBefore(new JWTLoginFilter("/user/login", authenticationManager()),
