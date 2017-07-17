@@ -11,6 +11,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
           .addResourceHandler("/resources/**")
-          .addResourceLocations("/resources/"); 
+          .addResourceLocations("/resources/","/resources/static/"); 
     }
 }
