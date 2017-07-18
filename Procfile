@@ -1,0 +1,1 @@
+web java -Dserver.port=8088 $JAVA_OPTS -jar target/webappl-0.0.1-SNAPSHOT.jar
