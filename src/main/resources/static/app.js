@@ -15,19 +15,19 @@ StacktraceService.prototype.print = function ($window, exception) {
 angular.module('hmModule').service('stacktraceService', StacktraceService);
 app.constant('urls', {
 
-   // VIDEO_SERVICE_API:"https://localhost:8088/sb/landing/video"
-    VIDEO_SERVICE_API:"https://localhost:8088/sb/landing/video",
-    VIDEO_Library_API:"https://localhost:8088/sb/landing/videolibrary",
-    VIDEO_ADD_API:"https://localhost:8088/sb/video/create",
-    VIDEO_ADD_SUBJECT:"https://localhost:8088/sb/subject/create",
-    SUBJECT_NAME_API:"https://localhost:8088/sb/subject/all",
-    MENU_ITEM_ADD_API: "https://localhost:8088/sb/menu/create",
-    MENU_ITEM_ALL_API: "https://localhost:8088/sb/menu/all",
-    USER_ADD_API: "https://localhost:8088/sb/user/register",
-    USER_LOGIN_API:"https://localhost:8088/sb/user/login",
-    PREMIUM_API:"https://localhost:8088/sb/premium/all",
-    VIDEO_ADD_DESCRIPTION_BY_VIDEO_ID:"https://localhost:8088/sb/video/getDesc",
-    STATES_API:"https://localhost:8088/sb/state/search/findBystatename?statename="
+   // VIDEO_SERVICE_API:"/landing/video"
+    VIDEO_SERVICE_API:"/landing/video",
+    VIDEO_Library_API:"/landing/videolibrary",
+    VIDEO_ADD_API:"/video/create",
+    VIDEO_ADD_SUBJECT:"/subject/create",
+    SUBJECT_NAME_API:"/subject/all",
+    MENU_ITEM_ADD_API: "/menu/create",
+    MENU_ITEM_ALL_API: "/menu/all",
+    USER_ADD_API: "/user/register",
+    USER_LOGIN_API:"/user/login",
+    PREMIUM_API:"/premium/all",
+    VIDEO_ADD_DESCRIPTION_BY_VIDEO_ID:"/video/getDesc",
+    STATES_API:"/state/search/findBystatename?statename="
 });
 
 app.constant('errors', {
