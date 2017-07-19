@@ -32,7 +32,13 @@ app.constant('urls', {
 
 app.constant('errors', {
     WRONG_CREDENTIALS: 'Incorrect username/password !',
-    NULL_CHECK:'Field Cannot Be Empty'
+    NULL_CHECK:'Field Cannot Be Empty',
+    EXCLAIM_ERROR:'Error!',
+    FOLLOWUP_MESSAGE_REGISTER_FAILURE:'Change a few things up and try submitting again..'
+});
+app.constant('success', {
+    EXCLAIM_CONGRATS:'Congratulations!',
+    FOLLOWUP_MESSAGE_REGISTERED: 'You have successfully Registered.'
 });
 app.constant('context', {
     PAGESIZE: '3'

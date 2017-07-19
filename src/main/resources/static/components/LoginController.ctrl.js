@@ -1,5 +1,5 @@
 'use strict';
-angular.module('hmModule').controller("LoginController", function($localStorage,$rootScope, $scope,$state,$http,urls,LoginService,RegisterService,GetPostService) 
+angular.module('hmModule').controller("LoginController", function($localStorage,$rootScope, $scope,$state,errors,success,$http,urls,LoginService,RegisterService,GetPostService) 
 {
 		$rootScope.userProp='';
 		$rootScope.isUserLoggedIn=false;
@@ -52,16 +52,36 @@ angular.module('hmModule').controller("LoginController", function($localStorage,
 		{
 			
 			GetPostService.login(urls.USER_LOGIN_API,$scope.accountcredentials)
-			.then(function(token) 
+			.then(function(response)
 			{
-                    //$scope.token = token;
-                    //$http.defaults.headers.common.Authorization = 'Bearer ' + token;
-                    //$scope.checkRoles();
-                    GetPostService.getCall(urls.PREMIUM_API).then(function(response) 
-					{
-		                  console.log(response);
-					});
-            });
+                            
+                           
+                            //console.log('data is ');
+                            //console.log(response.data);
+                           console.log('response is');
+							console.log(response);
+							$rootScope.activealert=true;
+							if(response.status==200)
+							{
+							$rootScope.exclaim=success.EXCLAIM_CONGRATS;
+							$rootScope.followup=success.FOLLOWUP_MESSAGE_REGISTERED;
+							}
+							else
+							{
+								$rootScope.activealert=false;
+								$scope.errorOccured=errors.FOLLOWUP_MESSAGE_REGISTER_FAILURE;
+							}
+						
+                        },
+                        function (errResponse) {    
+                            console.log('error response is');
+							console.log(errResponse);
+                            $rootScope.activealert=false;
+							$scope.errorOccured=errors.FOLLOWUP_MESSAGE_REGISTER_FAILURE;
+						
+
+							
+                        });
 			
 			
 		};
