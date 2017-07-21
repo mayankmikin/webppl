@@ -191,7 +191,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
             });*/
            
 
-        $urlRouterProvider.otherwise('/error');
+        $urlRouterProvider.otherwise('/home);
         // $provide provider is used to register the components in angular internally.
 
     }
