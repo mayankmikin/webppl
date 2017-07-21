@@ -48,8 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	                UsernamePasswordAuthenticationFilter.class);
 			http
         .headers()
-        .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList("http://mayankv.in"))));
-	    
+        .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList("www.mayankv.in"))));
+	      http
+		.headers()
+			.frameOptions().sameOrigin()
+			.httpStrictTransportSecurity().disable();
 	  //remember me configuration
 	  	/*	http.rememberMe().
 	  		key("rem-me-key").
