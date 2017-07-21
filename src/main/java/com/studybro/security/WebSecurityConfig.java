@@ -32,6 +32,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	 @Override
 	  protected void configure(HttpSecurity http) throws Exception {
 	    http.csrf().disable().authorizeRequests()
+			.and()
+			.headers()
+				.frameOptions().sameOrigin()
+				.httpStrictTransportSecurity().disable()
+			.and()
 	        .antMatchers("/user/register").permitAll()
 	        .antMatchers("/","/sb", "/**.html", "/**.js","/**/**.html", "/**/**.js","/**/**.css","/**/**.png","/**/**.jpg").permitAll()
 	        .antMatchers(HttpMethod.POST, "/user/login").permitAll()
