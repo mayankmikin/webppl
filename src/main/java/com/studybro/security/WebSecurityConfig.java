@@ -33,10 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	  protected void configure(HttpSecurity http) throws Exception {
 	    http.csrf().disable().authorizeRequests()
 			.and()
-			.headers()
-				.frameOptions().sameOrigin()
-				.httpStrictTransportSecurity().disable()
-			.and()
 	        .antMatchers("/user/register").permitAll()
 	        .antMatchers("/","/sb", "/**.html", "/**.js","/**/**.html", "/**/**.js","/**/**.css","/**/**.png","/**/**.jpg").permitAll()
 	        .antMatchers(HttpMethod.POST, "/user/login").permitAll()
@@ -49,6 +45,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	        // And filter other requests to check the presence of JWT in header
 	        .addFilterBefore(new JWTAuthenticationFilter(),
 	                UsernamePasswordAuthenticationFilter.class);
+			http.headers()
+				.frameOptions().sameOrigin()
+				.httpStrictTransportSecurity().disable();
 	    
 	  //remember me configuration
 	  	/*	http.rememberMe().
