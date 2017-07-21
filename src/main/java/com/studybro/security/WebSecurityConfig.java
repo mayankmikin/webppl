@@ -45,9 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	        // And filter other requests to check the presence of JWT in header
 	        .addFilterBefore(new JWTAuthenticationFilter(),
 	                UsernamePasswordAuthenticationFilter.class);
-			http.headers()
-				.frameOptions().sameOrigin()
-				.httpStrictTransportSecurity().disable();
+			
 	    
 	  //remember me configuration
 	  	/*	http.rememberMe().
