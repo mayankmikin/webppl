@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	                UsernamePasswordAuthenticationFilter.class);
 			http
         .headers()
-        .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList("www.mayankv.in"))))
+        .addHeaderWriter(new XFrameOptionsHeaderWriter(new WhiteListedAllowFromStrategy(Arrays.asList("http://mayankv.in"))));
 	    
 	  //remember me configuration
 	  	/*	http.rememberMe().
