@@ -1,6 +1,5 @@
 package com.studybro.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.neo4j.ogm.annotation.GraphId;
@@ -21,15 +20,22 @@ public class VideoUrlNeo
     private String video_name;
     
 
-    @Relationship(type = "DESCRIPTION", direction=Relationship.UNDIRECTED)
-    private Set<VideoDescription> description = new HashSet<VideoDescription>();
+    public Set<Playlists> getPlayLists() {
+		return playLists;
+	}
+
+	public void setPlayLists(Set<Playlists> playLists) {
+		this.playLists = playLists;
+	}
+
+	@Relationship(type = "DESCRIPTION", direction=Relationship.UNDIRECTED)
+    private Set<VideoDescription> description ;
     
-    // many to many mapping one video url can be present inside many subjects
-    @Relationship(type = "CLASS_IS", direction=Relationship.UNDIRECTED)
-    private Set<ClassName> classname = new HashSet<ClassName>();
-    @Relationship(type = "SUBJECT_IS", direction=Relationship.UNDIRECTED)
-    private Set<SubjectName> subname = new HashSet<SubjectName>();
+    @Relationship(type = "PLAYLIST_IS", direction = Relationship.UNDIRECTED)
+    private Set<Playlists> playLists;
+   
     
+	
 	public VideoUrlNeo() {
 
 		// TODO Auto-generated constructor stub
@@ -59,32 +65,6 @@ public class VideoUrlNeo
 		this.video_name = video_name;
 	}
 
-
-	public Set<ClassName> getClassname() {
-		return classname;
-	}
-
-	public void setClassname(Set<ClassName> classname) {
-		this.classname = classname;
-	}
-
-	public Set<SubjectName> getSubname() {
-		return subname;
-	}
-
-	public void setSubname(Set<SubjectName> subname) {
-		this.subname = subname;
-	}
-
-	public Set<VideoDescription> getDescription() {
-		return description;
-	}
-
-	public void setDescription(Set<VideoDescription> description) {
-		this.description = description;
-	}
-
-	
 
 	
 	

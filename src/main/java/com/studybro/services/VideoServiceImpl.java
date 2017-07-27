@@ -59,16 +59,16 @@ public class VideoServiceImpl implements VideoService
 
 	@Override
 	public List<VideoUrlNeo> findAllBySubjectName(String subname) {
-		
-		return repo.findAllBySubjectName(subname);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	
 	public List<VideoUrlNeo> findAllByClassName(String classname) {
-		
-		return repo.findAllByClassName(classname);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 
 	
 }

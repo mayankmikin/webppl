@@ -9,18 +9,16 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-@RelationshipEntity(type = "CLASS_IS")
-public class CLASS_IS_Relationship {
-	// this can be class 11 12 and any undergraduate
+@RelationshipEntity(type = "SUBJECT_IS")
+public class SUBJECT_IS_Relationship {
 
 	@GraphId
 	private Long id;
 
 	@StartNode
-	private Class className;
-
+	private Subject subject;
 	@EndNode
-	private Course course;
+	private Class className;
 
 	public Long getId() {
 		return id;
@@ -30,20 +28,20 @@ public class CLASS_IS_Relationship {
 		this.id = id;
 	}
 
+	public Subject getSubject() {
+		return subject;
+	}
+
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+
 	public Class getClassName() {
 		return className;
 	}
 
 	public void setClassName(Class className) {
 		this.className = className;
-	}
-
-	public Course getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course course) {
-		this.course = course;
 	}
 
 }
