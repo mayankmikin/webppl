@@ -50,8 +50,18 @@ angular.module('hmModule').factory('GetPostService',
           return $http.get(urL).success(function(response)
           {
                 console.log(response);
-                return response;
-            });
+               
+            }).then(
+                    function (response) 
+                    {
+                    	 return response;
+                    },
+                    function (errResponse)
+                    {    
+                        console.log(errResponse);
+                        return errResponse;
+                    }
+                  );
       
         
     }

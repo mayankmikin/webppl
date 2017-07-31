@@ -21,10 +21,8 @@ public class VideoUrlNeo
     
 	@Relationship(type = "DESCRIPTION", direction=Relationship.UNDIRECTED)
     private Set<VideoDescription> description ;
-    
-/*    @Relationship(type = "SEGMENT_IS", direction = Relationship.UNDIRECTED)
-    private SegmentName segments;*/
 	
+	// back relationship
 	@Relationship(type = "PLAYLISTS_VIDEOS_ARE", direction = Relationship.UNDIRECTED)
     private Set<Playlists> playlists;
 	

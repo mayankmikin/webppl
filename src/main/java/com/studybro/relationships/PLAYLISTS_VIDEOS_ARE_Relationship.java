@@ -23,9 +23,6 @@ public class PLAYLISTS_VIDEOS_ARE_Relationship {
 	private Playlists playslists;
 	@EndNode
 	private VideoUrlNeo videos;
-	
-	
-	
 
 	public Long getId() {
 		return id;

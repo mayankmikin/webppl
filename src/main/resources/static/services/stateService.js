@@ -13,7 +13,7 @@ angular.module('hmModule').factory('StateService',
 
            function getState(urL) 
         	{
-				return GetPostService.getCall(urL,null);
+				return GetPostService.getCall(urL);
             }
 
         }

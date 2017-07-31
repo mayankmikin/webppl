@@ -38,17 +38,18 @@
                     </blockquote>
                       
   <div id="classes_{{$index}}" name="classes_{{$index}}" class="collapse">
-   		 <p><code>Select University Below</code></p>
+   		 <p><code>Click University</code></p>
    		 <div ng-repeat="university in classes.chapOrUniveristy">
+   		 <blockquote>
    		 <button type="button" class="btn btn-info" data-toggle="collapse"  data-target="#uni_{{$index}}">{{university.chapter_universityName}}</button>
+   		     </blockquote>
    		     <div id="uni_{{$index}}" class="collapse">
-   		 		<p>Below Are The<code>PlayLists</code>choose any</p>
+   		 		<p>Click<code>View Tutorials</code> to watch</p>
    		 		<!-- <div ng-repeat="playlists in university.playlists">
    		 			<a>{{playlists.playlistname}}</a>
    		 		</div> -->
    		 		<button class="btn btn-info" ng-click="getSpecificPlaylist(courseSelected+'_'+subjects.subname+'_'+classes.classname+'_'+university.chapter_universityName)">
    		 		View Tutorials
-   		 		
    		 		</button>
    		 		
    		 	 </div>	

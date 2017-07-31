@@ -16,18 +16,19 @@ angular.module('hmModule').service('stacktraceService', StacktraceService);
 app.constant('urls', {
 
    // VIDEO_SERVICE_API:"/sb/landing/video"
-    VIDEO_SERVICE_API:"/sb/landing/video",
-    VIDEO_Library_API:"/sb/landing/videolibrary",
-    VIDEO_ADD_API:"/sb/video/create",
-    VIDEO_ADD_SUBJECT:"/sb/subject/create",
-    SUBJECT_NAME_API:"/sb/subject/all",
-    MENU_ITEM_ADD_API: "/sb/menu/create",
-    MENU_ITEM_ALL_API: "/sb/menu/all",
-    USER_ADD_API: "/sb/user/register",
-    USER_LOGIN_API:"/sb/user/login",
-    PREMIUM_API:"/sb/premium/all",
-    VIDEO_ADD_DESCRIPTION_BY_VIDEO_ID:"/sb/video/getDesc",
-    STATES_API:"/sb/state/search/findBystatename?statename="
+    VIDEO_SERVICE_API:"/landing/video",
+    VIDEO_Library_API:"/landing/videolibrary",
+    VIDEO_ADD_API:"/video/create",
+    VIDEO_ADD_SUBJECT:"/subject/create",
+    SUBJECT_NAME_API:"/subject/all",
+    MENU_ITEM_ADD_API: "/menu/create",
+    MENU_ITEM_ALL_API: "/menu/all",
+    USER_ADD_API: "/user/register",
+    USER_LOGIN_API:"/user/login",
+    PREMIUM_API:"/premium/all",
+    VIDEO_ADD_DESCRIPTION_BY_VIDEO_ID:"/video/getDesc",
+    STATES_API:"/state/search/findBystatename?statename=",
+    COURSE_API:"/courses/search/findBycourseName?coursename="
 });
 
 app.constant('errors', {
@@ -105,14 +106,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
             })
             .state('BCA', {
                 url: '/BCA',
-                templateUrl: 'angulartemplates/bca.html',
+                templateUrl: 'angulartemplates/course.html',
                 controller: 'StateController',
                 requireLogin: false
 
             })
             .state('MCA', {
                 url: '/MCA',
-                templateUrl: 'angulartemplates/mca.html',
+                templateUrl: 'angulartemplates/course.html',
                 controller: 'StateController',
                 requireLogin: false
 

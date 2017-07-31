@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('hmModule').factory('VideoService',
     ['$localStorage','$http', '$q', 'urls',
         function ($localStorage, $http, $q, urls) 
