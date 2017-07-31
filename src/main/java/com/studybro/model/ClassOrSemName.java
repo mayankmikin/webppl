@@ -11,32 +11,42 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @NodeEntity
-public class Class {
+public class ClassOrSemName {
 
 	@GraphId
 	private Long id;
 
 	private String classname;
-	@Relationship(type="SUBJECT_IS", direction = Relationship.UNDIRECTED)
-	private Subject subject;
+	
+	// front relationship
+	@Relationship(type = "CLASS_CHAPTER_UNIVERSITY_IS", direction = Relationship.UNDIRECTED)
+	private Set<ChapterOrUniversity> chapteroruniversity;
+	// back relationship
+	@Relationship(type = "SUBJECT_CLASS_IS", direction = Relationship.UNDIRECTED)
+	private Set<SubjectName> subnames; 
 
-	public Subject getSubject() {
-		return subject;
+	public Set<ChapterOrUniversity> getChapteroruniversity() {
+		return chapteroruniversity;
 	}
 
-	public void setSubject(Subject subject) {
-		this.subject = subject;
+	public void setChapteroruniversity(Set<ChapterOrUniversity> chapteroruniversity) {
+		this.chapteroruniversity = chapteroruniversity;
 	}
 
-	@Relationship(type = "CLASS_IS", direction = Relationship.UNDIRECTED)
-	private Set<Course> course;
+	public Set<SubjectName> getSubnames() {
+		return subnames;
+	}
 
-	public Class() {
+	public void setSubnames(Set<SubjectName> subnames) {
+		this.subnames = subnames;
+	}
+
+	public ClassOrSemName() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Class(String classname) {
+	public ClassOrSemName(String classname) {
 		super();
 		this.classname = classname;
 	}
@@ -55,14 +65,6 @@ public class Class {
 
 	public void setClassname(String classname) {
 		this.classname = classname;
-	}
-
-	public Set<Course> getCourse() {
-		return course;
-	}
-
-	public void setCourse(Set<Course> course) {
-		this.course = course;
 	}
 
 	@Override
@@ -88,7 +90,7 @@ public class Class {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Class other = (Class) obj;
+		ClassOrSemName other = (ClassOrSemName) obj;
 		if (classname == null) {
 			if (other.classname != null)
 				return false;

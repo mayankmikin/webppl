@@ -1,8 +1,5 @@
 package com.studybro.services;
 
-import java.util.List;
-
-import com.studybro.model.ClassName;
 import com.studybro.model.User;
 import com.studybro.model.VideoUrlNeo;
 

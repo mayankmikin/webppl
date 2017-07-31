@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
-import com.studybro.controllers.VideoOperationsController;
 import com.studybro.model.RememberMeToken;
 
 public class NeoPersistentTokenRepositoryImpl implements

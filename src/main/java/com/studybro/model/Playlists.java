@@ -17,27 +17,40 @@ public class Playlists {
 	private Long id;
 	
 	private String playlistname;
+	// front relationship
+	@Relationship(type = "PLAYLISTS_VIDEOS_ARE", direction = Relationship.UNDIRECTED)
+	private Set<VideoUrlNeo> videos;
 	
-	@Relationship(type = "COURSE_IS", direction = Relationship.UNDIRECTED)
-	private Course course;
+	//back relationship
+	@Relationship(type = "CHAP_PLAYLIST_IS", direction = Relationship.UNDIRECTED)
+	private Set<ChapterOrUniversity> chaporuniversity;
+	
+	
+	
+	public Set<VideoUrlNeo> getVideos() {
+		return videos;
+	}
+
+
+	public void setVideos(Set<VideoUrlNeo> videos) {
+		this.videos = videos;
+	}
+
+
+	public Set<ChapterOrUniversity> getChaporuniversity() {
+		return chaporuniversity;
+	}
+
+
+	public void setChaporuniversity(Set<ChapterOrUniversity> chaporuniversity) {
+		this.chaporuniversity = chaporuniversity;
+	}
+
 
 	public Playlists(String playlistname) {
 		super();
 		this.playlistname = playlistname;
 	}
-
-
-
-	public Course getCourse() {
-		return course;
-	}
-
-
-
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
 
 
 	public String getPlaylistname() {

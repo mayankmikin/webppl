@@ -1,6 +1,5 @@
- package com.studybro.model;
+package com.studybro.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.neo4j.ogm.annotation.GraphId;
@@ -9,26 +8,30 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @NodeEntity
-public class SubjectName 
-{
+public class SubjectName {
+
 	@GraphId
 	private Long id;
-	
-	private String subname;
-	// many to many mapping one subject can have many videos which are linked via classlevel(class 11 , class 12) 
-	@Relationship(type="SUBJECT_IS", direction = Relationship.UNDIRECTED)
-    private Set<VideoUrlNeo> videourls= new HashSet<VideoUrlNeo>();
 
-	public SubjectName() {
-		super();
-		// TODO Auto-generated constructor stub
+	private String subname;
+	
+	//back relationship
+	@Relationship(type = "COURSE_SUBJECT_IS", direction = Relationship.UNDIRECTED)
+	private Set<Course> course;
+	
+	//front relationship
+	@Relationship(type = "SUBJECT_CLASS_IS", direction = Relationship.UNDIRECTED)
+	private Set<ClassOrSemName> className;
+
+	public Long getId() {
+		return id;
 	}
 
-	public SubjectName(String subname) {
-		super();
-		this.subname = subname;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getSubname() {
@@ -39,64 +42,28 @@ public class SubjectName
 		this.subname = subname;
 	}
 
-	public Long getId() {
-		return id;
+	public Set<Course> getCourse() {
+		return course;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((subname == null) ? 0 : subname.hashCode());
-		return result;
+	public void setCourse(Set<Course> course) {
+		this.course = course;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SubjectName other = (SubjectName) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (subname == null) {
-			if (other.subname != null)
-				return false;
-		} else if (!subname.equals(other.subname))
-			return false;
-		return true;
+	public Set<ClassOrSemName> getClassName() {
+		return className;
 	}
 
-	@Override
-	public String toString() {
-		return "SubjectName [id=" + id + ", subname=" + subname + "]";
+	public void setClassName(Set<ClassOrSemName> className) {
+		this.className = className;
 	}
 
-	
-
-	public void setId(Long id) {
-		this.id = id;
+	public SubjectName() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-
-	public Set<VideoUrlNeo> getVideourls() {
-		return videourls;
-	}
-
-	public void setVideourls(Set<VideoUrlNeo> videourls) {
-		this.videourls = videourls;
-	}
-
 	
 
 	
-	
-	
-	
+
 }

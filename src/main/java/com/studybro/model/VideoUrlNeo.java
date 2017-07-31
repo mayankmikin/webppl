@@ -19,23 +19,31 @@ public class VideoUrlNeo
  
     private String video_name;
     
-
-    public Set<Playlists> getPlayLists() {
-		return playLists;
-	}
-
-	public void setPlayLists(Set<Playlists> playLists) {
-		this.playLists = playLists;
-	}
-
 	@Relationship(type = "DESCRIPTION", direction=Relationship.UNDIRECTED)
     private Set<VideoDescription> description ;
     
-    @Relationship(type = "PLAYLIST_IS", direction = Relationship.UNDIRECTED)
-    private Set<Playlists> playLists;
-   
-    
+/*    @Relationship(type = "SEGMENT_IS", direction = Relationship.UNDIRECTED)
+    private SegmentName segments;*/
 	
+	@Relationship(type = "PLAYLISTS_VIDEOS_ARE", direction = Relationship.UNDIRECTED)
+    private Set<Playlists> playlists;
+	
+	public Set<Playlists> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(Set<Playlists> playlists) {
+		this.playlists = playlists;
+	}
+
+	public Set<VideoDescription> getDescription() {
+		return description;
+	}
+
+	public void setDescription(Set<VideoDescription> description) {
+		this.description = description;
+	}
+
 	public VideoUrlNeo() {
 
 		// TODO Auto-generated constructor stub
