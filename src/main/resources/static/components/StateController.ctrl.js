@@ -1,5 +1,5 @@
 'use strict';
-angular.module('hmModule').controller("StateController", function($rootScope, $scope,$state,urls,StateService,GetPostService) 
+angular.module('hmModule').controller("StateController", function($localStorage,$rootScope, $scope,$state,urls,StateService,GetPostService) 
 {
 	//console.log('State Controller called');
 	//console.log($state.current.name);
@@ -10,20 +10,12 @@ angular.module('hmModule').controller("StateController", function($rootScope, $s
 	$scope.getSpecificPlaylist=function(playlistname)
 	{
 		console.log(playlistname);
+		$rootScope.playlistname=playlistname;
+		$localStorage.playlistname=playlistname;
+		$state.transitionTo('watch');
+		
 	};
-	/*$scope.tabsArray=
-		{
-			course:[{
-					 subname:[{
-						 		classOrSem:[{
-						 					 chapOrUniversity:[{
-						 						 				Playlists:[]
-						 					 				  }]
-						 				   }]
-					 		 }]
-					}]
-		};*/
-	//console.log(StateService.getState(urls.COURSE_API+$state.current.name));
+	
    GetPostService.getCall(urls.COURSE_API+$state.current.name)
 	.then(
             function (mainResponse) 

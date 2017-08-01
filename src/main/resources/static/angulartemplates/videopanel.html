@@ -1,102 +1,35 @@
 <style type="text/css">
-    html, body {
-    margin: 0;
-    padding: 0;
+h1 {
+  font-weight: 400;
+  font-size: 1.75em;
+  color: #222;
+  margin-bottom: 60px;
 }
 
-.playlist ul {
-    list-style-type: none;
+.wrapper {
+  margin: 20px 0;
+  min-height: 440px;
 }
 
-.playlist ul a {
-    cursor: pointer;
-    color: #428bca;
-    text-decoration: none;
+label {
+  font-weight: 400;
+  font-size: 1.15em;
+  display: block;
+  padding: 10px 0;
 }
 
-.playlist ul a:visited {
-    color: #428bca;
+img {
+  width: 200px;
+  height: auto;
+  margin-top: 20px;
 }
 
-.playlist ul a:hover {
-    color: #428bca;
-    text-decoration: underline;
+input[type="text"] {
+  width: 70%;
+  margin: 0 auto;
 }
-
-.videogular-container {
-    width: 100%;
-    height: 320px;
-    margin: auto;
-    overflow: hidden;
-    
-}
-
-.videogular-container .skipButton {
-    position: absolute;
-    padding: 10px;
-    top: 10px;
-    right: 10px;
-    z-index: 99999;
-    color: white;
-    cursor: pointer;
-    background-color: #666666;
-    border: 2px #FFFFFF solid;
-    display: none;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    border-radius: 10px;
-
-}
-
-@media (min-width: 1200px) {
-    .videogular-container {
-        width: 1170px;
-        height: 658.125px;
-    }
-
-    .videogular-container.audio {
-        width: 1170px;
-        height: 50px;
-    }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-    .videogular-container {
-        width: 940px;
-        height: 528.75px;
-    }
-
-    .videogular-container.audio {
-        width: 940px;
-        height: 50px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .videogular-container {
-        width: 728px;
-        height: 409.5px;
-    }
-
-    .videogular-container.audio {
-        width: 728px;
-        height: 50px;
-    }
-}
-
-.vid-thumb {
-      float:left;
-            margin-right: 8px;
-        }
-
-   .desc {
-            color: #CACACA;
-            font-size: 13px;
-            margin-top:5px;
-        } 
-
 </style>
+
 <style type="text/css">
     body {
     padding-top: 50px;
@@ -224,84 +157,46 @@ div.input-group {
 
 
 <div class="row">
-<div class="col-md-8">
-    <div class="videogular-container" style="margin-left: 20px !important;">
-        <videogular vg-player-ready="controller.onPlayerReady($API)" vg-complete="controller.onCompleteVideo()" vg-theme="controller.config.theme.url">
-            <vg-media vg-src="controller.config.sources"
-                      vg-tracks="controller.config.tracks">
-            </vg-media>
-
-            <vg-controls>
-                <vg-play-pause-button></vg-play-pause-button>
-                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
-                <vg-scrub-bar>
-                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                </vg-scrub-bar>
-                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
-                <vg-volume>
-                    <vg-mute-button></vg-mute-button>
-                    <vg-volume-bar></vg-volume-bar>
-                </vg-volume>
-                <vg-fullscreen-button></vg-fullscreen-button>
-            </vg-controls>
-
-            <vg-overlay-play></vg-overlay-play>
-            <vg-buffering></vg-buffering>
-            <vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
-        </videogular>
-    </div>
- </div>
-    
 <div class="col-md-1">
 </div>
+<div class="col-md-8">
+<br/>
+<label class="text-center"><STRONG>Currently Playing : </STRONG>{{currentVideo.name}} </label>
 
+   <!--  <video ng-src={{ "http://ec2-34-211-220-53.us-west-2.compute.amazonaws.com/YouPHPTube/videoEmbeded/movie76195mp4_5942cd4e469c72.28108415" | trustUrl }}"> -->
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="{{currentVideo.url | trustUrl}}"></iframe>
+</div>
+     
+</div>
+   
     <div class="col-md-2">
+<br/>
+<label class="text-center"><STRONG>Playlist Name: </STRONG>{{playlistname}} </label>
 
-    <!-- <div class="playlist">
+	     <div class="table-responsive">
+	    <table class="table table-bordered">
+	    <thead>
+	        <tr>
+	        <th><span class="label label-success">{{subjectname}}&nbsp;{{coursename}}</span>&nbsp;<span class="badge">{{videoObjects.length}}</span>&nbsp;<STRONG>&nbsp;Videos</STRONG></th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="vid in videoObjects">
+	      <td>	     
 
+	       <button ng-click="setVideo($index)" style="background: url('http://img.youtube.com/vi/{{vid.url_name | extractvideoid}}/default.jpg');height:100px;width:100px;">
+	       </button>
+	        <label ng-click="setVideo($index)">{{vid.video_name}}</label>
+	      </td>
+	     
+	      </tr>
+	      
+	      </tbody>
+	    </table>
+	
+	    </div>
     
-        <ul>
-
-            <li><a ng-click="controller.setVideo(0)"><span class="vid-thumb"><img width=72 src="https://img.youtube.com/vi/vYoh2IgoBXg/default.jpg" /></span>
-            <div class="desc">Pale Blue Dot</div></a>
-            </li>
-
-
-            <li><a ng-click="controller.setVideo(1)">
-            <span class="vid-thumb"><img width=72 src="https://img.youtube.com/vi/vYoh2IgoBXg/default.jpg" /></span>
-            <div class="desc">Big Buck Bunny</div></a>
-            </li>
-
-
-        </ul>
-
-    </div> -->
-    <div class="table-responsive">
-    <table class="table table-bordered">
-    <thead>
-        <tr>
-        <th><span class="label label-success">Physics Class 12</span><span class="badge">5</span> <STRONG>Videos</STRONG></th>
-        </tr>
-    </thead>
-    <tbody>
-      <tr>
-      <td>
-          <span class="vid-thumb"><img width=72 src="https://img.youtube.com/vi/vYoh2IgoBXg/default.jpg" /></span>
-        <a ng-click="controller.setVideo(0)">Pale Blue Dot</a>
-      </td>
-      </tr>
-      <tr>
-      <td>
-      <span class="vid-thumb"><img width=72 src="https://img.youtube.com/vi/vYoh2IgoBXg/default.jpg" /></span>
-          <a ng-click="controller.setVideo(1)">Big Buck Bunny</a>
-      </td>
-      </tr>
-      </tbody>
-    </table>
-
-    </div>
     </div>
 
 </div>
-
-

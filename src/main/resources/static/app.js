@@ -1,9 +1,6 @@
 var app = angular.module('hmModule', ['ui.router', 'ngStorage', 'ngCookies','ui.bootstrap',"ngSanitize",
-            'com.2fdevs.videogular',
-            "com.2fdevs.videogular.plugins.controls",
-            "com.2fdevs.videogular.plugins.overlayplay",
-            "com.2fdevs.videogular.plugins.poster",
-            "com.2fdevs.videogular.plugins.buffering"]);
+
+            "ngYoutubeEmbed"]);
 //var appp = angular.module('hmModule',[]);
 var StacktraceService = function () { }
 StacktraceService.prototype.print = function ($window, exception) {
@@ -28,7 +25,8 @@ app.constant('urls', {
     PREMIUM_API:"/premium/all",
     VIDEO_ADD_DESCRIPTION_BY_VIDEO_ID:"/video/getDesc",
     STATES_API:"/state/search/findBystatename?statename=",
-    COURSE_API:"/courses/search/findBycourseName?coursename="
+    COURSE_API:"/courses/search/findBycourseName?coursename=",
+    PLAYLIST_GET_API:"/playlists/search/findByplaylistname?playlistname="
 });
 
 app.constant('errors', {
@@ -264,7 +262,13 @@ app.filter('trustUrl', function ($sce)
             return $sce.trustAsResourceUrl(url);
         };
     });
-
+app.filter('extractvideoid', function () 
+	    {
+	         return function (url) 
+	         {
+	            return url.split("/")[url.split("/").length-1];
+	        };
+	    });
 app.config(function ($httpProvider) {
     
   //$httpProvider.defaults.headers.common = {};
